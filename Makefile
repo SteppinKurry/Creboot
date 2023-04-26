@@ -1,5 +1,5 @@
 #OBJS specifies which files to compile as part of the project
-OBJS = lelol.c creboot.c
+OBJS = qmenu.c creboot.c
 
 #CC specifies which compiler we're using
 CC = gcc
@@ -12,7 +12,7 @@ COMPILER_FLAGS = -Wall
 LINKER_FLAGS = 
 
 #OBJ_NAME specifies the name of our exectuable
-OBJ_NAME = crencreboot
+OBJ_NAME = crypt
 
 #This is the target that compiles our executable
 all : $(OBJS)

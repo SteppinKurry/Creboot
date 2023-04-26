@@ -82,8 +82,6 @@ int encrypt(char* mes, char* key, char* chart_name)
 	int key_len = strlen(key);
 	int current_num = 0;
 
-	printf("%c\n", to_char_c(98, numero));
-
 	for (int x = 0; x < mes_len; x++)
 	{
 		// Convert char to number
