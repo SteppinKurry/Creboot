@@ -12,7 +12,7 @@ COMPILER_FLAGS = -Wall
 LINKER_FLAGS = 
 
 #OBJ_NAME specifies the name of our exectuable
-OBJ_NAME = crypt
+OBJ_NAME = creboot
 
 #This is the target that compiles our executable
 all : $(OBJS)
