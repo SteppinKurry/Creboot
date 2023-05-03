@@ -3,9 +3,9 @@ A program that encrypts text files. Pretty cool
 
 Like I said above, this is a program that "encrypts" text files. I'm not sure if it's actually encryption or not, but who cares? I think it's cool.
 
-Right now, the menu is still a really terrible command line interface that I quickly threw together last year. It mostly works, and it gets the point 
-across, but I don't necessarily reccomend using it. If the universe somehow brought you here and you've decided that you absolutely have to try this 
-out, you can just separately include "creboot.c" and "creeboot.h" in another project, and they should work just fine.
+qmenu.c has been added as the menu. It doesn't allow switching keys/charts files on the fly, but, as the name suggests, it's a very quick menu 
+(one command and two arguments). This is the current suggested way to get the full Creboot experience. As always, creboot.c and creboot.h work 
+fine on their own, so if you want to include them in your own project, be my guest. Maybe you can make an actually good menu with them.
 
 In order for an encryption/decryption to successfully occur, you need three things:
 1. Message/text file
@@ -13,7 +13,7 @@ In order for an encryption/decryption to successfully occur, you need three thin
 3. Charts file
 
 The first two are pretty self-explanatory, but the third one is a little unusual. Don't ask me why I decided to call it a charts file; it's a long story. 
-The charts file is essentially a text file containing all possible keystrokes on the keyboard (0-9, a-z, etc.). I'm not interested in going into the 
+The charts file is essentially a text file containing all possible keystrokes on the keyboard (0-9, a-z, etc.). I'm not interested in getting into the 
 specifics right now, so if you plan to use this program, I reccomend that you use one of the ones I included; they're good to go. Bad charts files are 
 a great way to obliterate your files in an unrecoverable manner. 
 
@@ -25,4 +25,4 @@ person on the other end would have to know to "encrypt" it to get the message ou
 different charts files for each one.
 
 I think that's enough explanation from me for now. If for some reason you have any interest in using this, I wish you luck, and I hope you enjoy 
-the little program I made. I had fun doing it.
+the little program I made. It's been fun to work on.
