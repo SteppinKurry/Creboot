@@ -11,11 +11,10 @@
 #include <string.h>
 
 #include "creboot.h"
+#include "config.h"
 
-// Default key and charts file
-char* key = "put a good password here (or you can honestly just use this as a password)";
-char* charts = "./default.dll";
-
+// The key and path to charts file are kept in "config.h" now. 
+// Look there to change them
 
 int file_path(char* filename, char* option)
 {
@@ -28,6 +27,7 @@ int file_path(char* filename, char* option)
 	char c; // Individual characters from the file
 	int x = 0;
 
+	// Read the file; resizes if file is larger than buffer
 	while ((c = fgetc(fh)) != EOF)
 	{
 		buffer[x] = c; // Loads characters from charts into numero
@@ -42,8 +42,13 @@ int file_path(char* filename, char* option)
 	buffer[x] = '\0';
 	fclose(fh);
 
-	if (!strncmp(option, "e", 1)) { encrypt(buffer, key, charts); }
-	if (!strncmp(option, "d", 1)) { decrypt(buffer, key, charts); }
+	// Encryption
+	int e = 0; // Error
+	if (option[0] == 'e') { e = encrypt(buffer, key, charts); }
+	if (option[0] == 'd') { e = decrypt(buffer, key, charts); }
+
+	// The only thing that could've gone wrong is the charts file
+	if (e == -1) { printf("'%s' not found >:(\n", charts); }
 
 	fh = fopen(filename, "w");
 	fputs(buffer, fh);
@@ -76,22 +81,22 @@ int main(int argc, char* argv[])
 				printf("Couldn't find: %s\n", argv[e_addr]);
 				continue;
 			}
-			if (!strncmp(argv[1], "e", 1)) { printf("Encrypted: %s\n", argv[e_addr]); }
-			if (!strncmp(argv[1], "d", 1)) { printf("Decrypted: %s\n", argv[e_addr]); }
+			if (argv[1][0] == 'e') { printf("Encrypted: %s\n", argv[e_addr]); }
+			if (argv[1][0] == 'd') { printf("Decrypted: %s\n", argv[e_addr]); }
 		}
 		return 0;
 	}
 
 	// File doesn't exist, encrypt first argument
 
-	if (!strncmp(argv[1], "e", 1)) 
+	if (argv[1][0] == 'e') 
 	{ 
 		encrypt(argv[2], key, charts); 
 		printf("Encrypted: %s\n", argv[2]);
 		return 0;
 	}
 
-	if (!strncmp(argv[1], "d", 1)) 
+	if (argv[1][0] == 'd') 
 	{ 
 		decrypt(argv[2], key, charts); 
 		printf("Decrypted: %s\n", argv[2]);

@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdio.h>
 
+// 5-3-23
 // A list of already found characters in charts file
 // A character's place in this list is its ascii value
 // For example, the number corresponding to "A" would be 
@@ -22,7 +23,7 @@ int to_number_c(char c, char* numero)
 	// 5-3-23
 	// Updated to use numero_list where possible
 
-	int ascii_c = c;
+	int ascii_c = c; // Gives the ASCII value for the current character
 
 	int number_value = numero_list[ascii_c];
 	if (number_value != -1)
@@ -64,7 +65,7 @@ int open_chart(char* chart_name, char* numero)
 {
 	// 4-25-23
 	// Thought this might help make the code more readable
-	// Opens a charts file and stores the contents into numero
+	// Opens a charts file and stores the contents in numero
 	// Throws the overall length into numero[0] and also 
 	// null terminates at the end
 
