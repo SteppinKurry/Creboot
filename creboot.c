@@ -1,3 +1,4 @@
+// Cal Tipton
 // 4-25-23
 // Remaking it again. Gonna be even faster now
 
@@ -10,7 +11,7 @@
 // A character's place in this list is its ascii value
 // For example, the number corresponding to "A" would be 
 // found in numero_list[65]
-char numero_list[128] = {-1};
+char numero_list[128];
 
 int to_number_c(char c, char* numero)
 {
@@ -107,7 +108,8 @@ int encrypt(char* mes, char* key, char* chart_name)
 	{
 		// Convert char to number
 		current_num = to_number_c(mes[x], numero);
-
+		
+		// Character wasn't found in the charts file; ignore it
 		if (current_num == -1) { continue; }
 
 		// Add key
@@ -143,6 +145,7 @@ int decrypt(char* mes, char* key, char* chart_name)
 		// Convert char to number
 		current_num = to_number_c(mes[x], numero);
 
+		// Character wasn't found in the charts file; ignore it
 		if (current_num == -1) { continue; }
 
 		// Subtract key
