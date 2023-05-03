@@ -6,11 +6,28 @@
 #include <string.h>
 #include <stdio.h>
 
+// A list of already found characters in charts file
+// A character's place in this list is its ascii value
+// For example, the number corresponding to "A" would be 
+// found in numero_list[65]
+char numero_list[128] = {-1};
+
 int to_number_c(char c, char* numero)
 {
 	// 4-25-23
 	// Converts a single character to a number 
 	// and returns the value
+
+	// 5-3-23
+	// Updated to use numero_list where possible
+
+	int ascii_c = c;
+
+	int number_value = numero_list[ascii_c];
+	if (number_value != -1)
+	{
+		return number_value;
+	}
 
 	int num_pos = 1;
 	while (c != numero[num_pos])
@@ -22,6 +39,7 @@ int to_number_c(char c, char* numero)
 		}
 	}
 
+	numero_list[ascii_c] = num_pos;
 	return num_pos;
 }
 
@@ -65,12 +83,15 @@ int open_chart(char* chart_name, char* numero)
 	numero[0] = x; // Store length of numero in numero[0]
 	numero[x] = '\0';
 
+	memset(numero_list, -1, 128);		// Initialize numero_list to -1s
+
 	return 0;
 
 }
 
 int encrypt(char* mes, char* key, char* chart_name)
 {
+
 	// 4-25-23
 	// A new encrypt method. I think it could be faster
 	char numero[99]; // Chart file
