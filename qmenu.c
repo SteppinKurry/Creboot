@@ -4,6 +4,7 @@
 
 // 5-2-23
 // Adding support for encrypting multiple files at a time
+// Also switching around order of arguments a little
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -12,13 +13,13 @@
 #include "creboot.h"
 
 // Default key and charts file
-char* key = "=@$#{`2|@S}#*^J]\%(*\\=7I.@9H6\"$7-J)";
+char* key = "fuck, gotta change this nonsense now";
 char* charts = "/home/megaloser/Documents/programming/ben/Charts/default.dll";
 
 
 int file_path(char* filename, char* option)
 {
-	FILE* fh = fopen(filename, "r");
+	FILE* fh = fopen(filename, "r+");
 
 	if (!fh) { return -1; }
 
@@ -54,44 +55,46 @@ int file_path(char* filename, char* option)
 }
 
 int main(int argc, char* argv[])
-{
+{	
 	if (argc < 3) { return 0; } // No argument supplied, do nothing
 
-	FILE* op_file = fopen(argv[1], "r"); // If file exists, encrypt that
+	FILE* op_file = fopen(argv[2], "r"); // If file exists, encrypt that
 
 	if (argc > 3 || op_file)    // File exists, encrypt it
 	{
+		int e_addr;				// stores the index of the files in argv
 		fclose(op_file);
-
 		int e = 0;
+
 		for (int x = 0; x < argc - 2; x++)
 		{
-			e = file_path(argv[x+1], argv[argc-1]);
+			e_addr = x + 2; 
+			e = file_path(argv[e_addr], argv[1]);
 			
 			if (e == -1)
 			{
-				printf("Couldn't find: %s\n", argv[x+1]);
+				printf("Couldn't find: %s\n", argv[e_addr]);
 				continue;
 			}
-			if (!strncmp(argv[argc - 1], "e", 1)) { printf("Encrypted: %s\n", argv[x+1]); }
-			if (!strncmp(argv[argc - 1], "d", 1)) { printf("Decrypted: %s\n", argv[x+1]); }
+			if (!strncmp(argv[1], "e", 1)) { printf("Encrypted: %s\n", argv[e_addr]); }
+			if (!strncmp(argv[1], "d", 1)) { printf("Decrypted: %s\n", argv[e_addr]); }
 		}
 		return 0;
 	}
 
 	// File doesn't exist, encrypt first argument
 
-	if (!strncmp(argv[2], "e", 1)) 
+	if (!strncmp(argv[1], "e", 1)) 
 	{ 
-		encrypt(argv[1], key, charts); 
-		printf("Encrypted: %s\n", argv[1]);
+		encrypt(argv[2], key, charts); 
+		printf("Encrypted: %s\n", argv[2]);
 		return 0;
 	}
 
-	if (!strncmp(argv[2], "d", 1)) 
+	if (!strncmp(argv[1], "d", 1)) 
 	{ 
-		decrypt(argv[1], key, charts); 
-		printf("Decrypted: %s\n", argv[1]);
+		decrypt(argv[2], key, charts); 
+		printf("Decrypted: %s\n", argv[2]);
 		return 0;
 	}
 
