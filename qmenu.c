@@ -12,8 +12,8 @@
 #include "creboot.h"
 
 // Default key and charts file
-char* key = "=@$#{`2|@S}#*^J]\%(*\\=7I.@9H6\"$7-J)";
-char* charts = "/home/megaloser/Documents/programming/ben/Charts/default.dll";
+char* key = "put a default key here";
+char* charts = "put the path to a default charts file here";
 
 
 int file_path(char* filename, char* option)
