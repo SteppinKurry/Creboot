@@ -13,8 +13,13 @@
 #include "creboot.h"
 
 // Default key and charts file
+<<<<<<< HEAD
 char* key = "fuck, gotta change this nonsense now";
 char* charts = "/home/megaloser/Documents/programming/ben/Charts/default.dll";
+=======
+char* key = "put a default key here";
+char* charts = "put the path to a default charts file here";
+>>>>>>> 20166938166ee775b8372881c8faf83b6be170d4
 
 
 int file_path(char* filename, char* option)
