@@ -14,7 +14,7 @@ In order for an encryption/decryption to successfully occur, you need three thin
 
 The first two are pretty self-explanatory, but the third one is a little unusual. Don't ask me why I decided to call it a charts file; it's a long story. 
 The charts file is essentially a text file containing all possible keystrokes on the keyboard (0-9, a-z, etc.). I'm not interested in getting into the 
-specifics right now, so if you plan to use this program, I reccomend that you use one of the ones I included; they're good to go. Bad charts files are 
+specifics right now, so if you plan to use this program, I recommend that you use one of the ones I included; they're good to go. Bad charts files are 
 a great way to obliterate your files in an unrecoverable manner. 
 
 If you decrypt a file with a different charts file, it will not work properly. For a file to be properly encrypted, you need the correct key and charts 
